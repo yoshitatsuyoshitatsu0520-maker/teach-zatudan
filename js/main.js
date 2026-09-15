@@ -25,7 +25,8 @@ const sendButton =
 
 
 let currentDialogue = null;
-
+let gameStarted = false;
+let greetingFinished = false;
 
 const randomFoods = [
 
@@ -496,22 +497,6 @@ function startBGM() {
 
     bgm.volume = 0.3;
 
-    bgm.play()
-        .then(() => {
-
-            bgmPlaying = true;
-
-            bgmButton.textContent =
-                "🔊 BGM ON";
-
-        })
-        .catch(() => {
-
-            console.log(
-                "BGMを再生できませんでした"
-            );
-
-        });
 
 }
 
@@ -584,22 +569,18 @@ function startGame() {
 
     bgm.volume = 0.3;
 
-    bgm.play();
-
     setTimeout(() => {
 
-        showDialogue(
-            getGreeting()
-        );
+        showDialogue(getGreeting());
 
         setTimeout(() => {
 
+            greetingFinished = true;
             nextDialogue();
 
         }, 2000);
 
     }, 2000);
-
 }
 function nextDialogue() {
 
@@ -760,35 +741,32 @@ function waitForNextDialogue() {
 
 }
 
-document.addEventListener(
-    "click",
-    () => {
+document.addEventListener("click", () => {
 
-        startBGM();
+    startBGM();
 
-        if (!inputArea.classList.contains("hidden")) {
-            return;
-        }
-
-        clearTimeout(nextTimer);
-
-        nextDialogue();
-
+    // 最初の挨拶が終わるまでは
+    // クリックで次のセリフへ進まない
+    if (!greetingFinished) {
+        return;
     }
-);
-sendButton.addEventListener(
-    "click",
-    sendReply
-);
 
-userInput.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (event.key === "Enter") {
-            sendReply();
-        }
-
+    if (!inputArea.classList.contains("hidden")) {
+        return;
     }
-);
+
+    clearTimeout(nextTimer);
+    nextDialogue();
+});
+sendButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    sendReply();
+});
+
+userInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendReply();
+    }
+});
 startGame();
