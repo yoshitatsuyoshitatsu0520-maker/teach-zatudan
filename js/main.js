@@ -25,7 +25,7 @@ const sendButton =
 
 
 let currentDialogue = null;
-let gameStarted = false;
+
 let greetingFinished = false;
 
 const randomFoods = [
