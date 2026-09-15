@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ティーチくんとのんびり雑談</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <main class="game">
+
+        <!-- ティーチくん -->
+        <div class="character-area">
+
+            <img
+                id="teachImage"
+                src="images/1.png"
+                alt="ティーチくん"
+            >
+
+        </div>
+
+
+        <!-- 文字フレーム -->
+        <div
+            id="dialogueBox"
+            class="dialogue-box hidden"
+        >
+
+            <div
+                id="speakerName"
+                class="speaker-name"
+            >
+                ティーチくん
+            </div>
+
+            <div
+                id="dialogueText"
+                class="dialogue-text"
+            ></div>
+
+        </div>
+
+
+        <!-- 入力エリア -->
+        <div
+            id="inputArea"
+            class="input-area hidden"
+        >
+
+            <input
+                id="userInput"
+                type="text"
+                placeholder="ここに入力..."
+                autocomplete="off"
+            >
+
+            <button id="sendButton">
+                送信
+            </button>
+
+        </div>
+
+    </main>
+<audio
+    id="bgm"
+    src="sounds/bgm.mp3"
+    loop
+></audio>
+
+<button id="bgmButton">
+    🔊 BGM ON
+</button>
+
+    <script
+        src="js/dialogue.js"
+    ></script>
+
+    <script
+        src="js/specialReplies.js"
+    ></script>
+
+    <script
+        src="js/main.js"
+    ></script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+/* =========================================
+   全体
+========================================= */
+
+body {
+    margin: 0;
+    background: #000;
+}
+
+
+/* =========================================
+   ゲーム画面
+========================================= */
+
+.game {
+    position: relative;
+
+    width: 800px;
+    max-width: 1360px;
+
+    aspect-ratio: 3400 / 2500;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: #fff;
+}
+
+
+/* =========================================
+   ティーチくんのイラスト
+========================================= */
+
+#teachImage {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   吹き出し
+========================================= */
+/* =========================================
+   吹き出し
+========================================= */
+
+.dialogue-box {
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    bottom: 12%;
+
+    box-sizing: border-box;
+
+    padding: 20px 30px;
+
+    background: rgba(30, 30, 35, 0.94);
+    color: #fff;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+    z-index: 10;
+
+    animation: dialogueAppear 0.4s ease-out;
+}
+@keyframes dialogueAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes dialogueDisappear {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+}
+
+.dialogue-box.disappearing {
+    animation: dialogueDisappear 0.3s ease-in forwards;
+}
+/* =========================================
+   名前
+========================================= */
+
+.speaker-name {
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+    color: #fff;
+}
+
+
+/* =========================================
+   セリフ
+========================================= */
+
+.dialogue-text {
+    font-size: 22px;
+    line-height: 1.7;
+
+    color: #fff;
+}
+
+
+/* =========================================
+   入力エリア
+========================================= */
+
+.input-area {
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    bottom: 3%;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 20;
+}
+
+
+/* =========================================
+   入力欄
+========================================= */
+
+#userInput {
+    flex: 1;
+
+    padding: 12px 15px;
+
+    font-size: 18px;
+
+    color: #fff;
+    background: rgba(15, 15, 20, 0.95);
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+
+    box-sizing: border-box;
+
+    outline: none;
+}
+
+
+/* 入力欄をクリックしたとき */
+
+#userInput:focus {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================
+   送信ボタン
+========================================= */
+
+#sendButton {
+    padding: 10px 25px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+
+    background: rgba(45, 45, 50, 0.95);
+    color: #fff;
+
+    cursor: pointer;
+}
+
+#sendButton:hover {
+    background: rgba(70, 70, 75, 0.95);
+}
+/* =========================================
+   非表示
+========================================= */
+
+.hidden {
+    display: none;
+}
+
+#bgmButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    z-index: 100;
+
+    padding: 8px 14px;
+
+    font-size: 14px;
+
+    color: #fff;
+    background: rgba(20, 20, 25, 0.8);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+#bgmButton:hover {
+    background: rgba(50, 50, 55, 0.9);
+}
