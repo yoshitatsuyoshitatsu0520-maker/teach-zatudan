@@ -490,14 +490,18 @@ function getRandomActivity() {
 
 }
 function startBGM() {
-
-    if (bgmPlaying) {
-        return;
-    }
+    if (bgmPlaying) return;
 
     bgm.volume = 0.3;
 
-
+    bgm.play()
+        .then(() => {
+            bgmPlaying = true;
+            bgmButton.textContent = "🔊 BGM ON";
+        })
+        .catch(() => {
+            console.log("BGMを再生できませんでした");
+        });
 }
 
 bgmButton.addEventListener(
