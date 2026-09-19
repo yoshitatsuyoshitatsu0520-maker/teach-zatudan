@@ -6,7 +6,7 @@ const specialReplies = [
 
     {
         type: "contains",
-        words: ["あああ", "アアア"],
+        words: ["あああ", "アアア", "ーーー", "！！！"],
         reply: "え、ええ……、そんなに叫ばなくても…",
         image: "images/4.png"
     },
@@ -134,7 +134,7 @@ const specialReplies = [
 
 {
     type: "exact",
-    words: ["え"],
+    words: ["え", "え？"],
     reply: "え？",
     image: "images/4.png"
 },
