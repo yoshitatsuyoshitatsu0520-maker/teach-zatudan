@@ -145,7 +145,12 @@ const specialReplies = [
     reply: "お……？",
     image: "images/4.png"
 },
-
+{
+    type: "exact",
+    words: ["死ね", "しね", "殺す", "ころす"],
+    reply: "え、え…？な、なんでそんなこと言うの…？ひっ…",
+    image: "images/5.png"
+},
 {
     type: "contains",
     words: ["なんでもない", "何でもない"],
