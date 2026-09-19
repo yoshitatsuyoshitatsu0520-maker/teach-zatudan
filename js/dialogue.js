@@ -275,4 +275,34 @@ const dialogues = [
         "images/4.png"
 },
 
+{
+    type: "monologue",
+    text: "あったかい飲み物でも飲もうかなぁ",
+    image: "images/1.png"
+},
+
+{
+    type: "monologue",
+    text: "ばななって、いつ見てもばななだねぇ",
+    image: "images/1.png"
+},
+{
+    type: "monologue",
+    text: "こうやって君と一緒にいると、なんだか安心するね",
+    image: "images/2.png"
+},
+,
+
+{
+    type: "monologue",
+    text: "明日は何をしようかなぁ……",
+    image: "images/3.png"
+},
+{
+    type: "monologue",
+    text: "……あれ？今、君の後ろに誰かいたような……",
+    image: "images/4.png"
+},
+
+
 ];
