@@ -229,75 +229,282 @@ body {
 /* =========================================
    ローディング画面
 ========================================= */
+/* =========================================
+   ローディング画面
+========================================= */
 
 #loadingScreen {
-
     position: fixed;
-
     inset: 0;
 
-    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #182332 0%,
+            #0a1018 45%,
+            #000 100%
+        );
 
     color: #fff;
 
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
     z-index: 9999;
 
-    transition: opacity 0.5s;
+    opacity: 1;
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+/* 背景の薄い光 */
+
+#loadingScreen::before {
+    content: "";
+
+    position: absolute;
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(120, 180, 255, 0.08);
+
+    filter: blur(80px);
+
+    animation: loadingGlow 4s ease-in-out infinite;
+}
+
+
+@keyframes loadingGlow {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 
 }
 
 
-.loadingTitle {
+/* =========================================
+   中央コンテンツ
+========================================= */
 
-    font-size: 32px;
+.loadingContent {
+    position: relative;
+
+    width: min(80%, 420px);
+
+    text-align: center;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   ロゴ
+========================================= */
+
+.loadingLogo {
+
+    font-size: 48px;
 
     font-weight: bold;
 
-    margin-bottom: 20px;
+    letter-spacing: 8px;
+
+    text-shadow:
+        0 0 10px rgba(160, 210, 255, 0.7),
+        0 0 30px rgba(100, 170, 255, 0.4);
+
+    animation: logoFloat 3s ease-in-out infinite;
 
 }
 
+
+.loadingLogo span {
+
+    display: block;
+
+    margin-top: -5px;
+
+    font-size: 16px;
+
+    letter-spacing: 10px;
+
+    opacity: 0.65;
+
+}
+
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+
+/* =========================================
+   サブタイトル
+========================================= */
+
+.loadingSub {
+
+    margin-top: 20px;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+}
+
+
+/* =========================================
+   ローディングバー
+========================================= */
 
 .loadingBar {
 
-    width: 300px;
+    position: relative;
 
-    height: 12px;
+    width: 100%;
+    height: 8px;
 
-    background: #333;
+    margin-top: 45px;
 
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+
+    border-radius: 20px;
 
     overflow: hidden;
 
+    box-shadow:
+        inset 0 0 8px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(100, 180, 255, 0.1);
+
 }
 
+
+/* バー本体 */
 
 #loadingProgress {
 
     width: 0%;
-
     height: 100%;
 
-    background: #fff;
+    border-radius: 20px;
 
-    transition: width 0.2s;
+    background:
+        linear-gradient(
+            90deg,
+            #6c8cff,
+            #9fd8ff,
+            #ffffff
+        );
+
+    box-shadow:
+        0 0 10px rgba(150, 210, 255, 0.8),
+        0 0 25px rgba(100, 170, 255, 0.4);
+
+    transition: width 0.25s ease;
 
 }
 
 
-#loadingPercent {
+/* =========================================
+   パーセント表示
+========================================= */
+
+.loadingInfo {
+
+    display: flex;
+
+    justify-content: space-between;
 
     margin-top: 10px;
 
-    font-size: 16px;
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+}
+
+
+/* =========================================
+   下のメッセージ
+========================================= */
+
+.loadingMessage {
+
+    margin-top: 30px;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    animation: loadingText 2s ease-in-out infinite;
+
+}
+
+
+@keyframes loadingText {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+}
+
+
+/* =========================================
+   スマホ
+========================================= */
+
+@media (max-width: 600px) {
+
+    .loadingLogo {
+        font-size: 38px;
+        letter-spacing: 6px;
+    }
+
+    .loadingLogo span {
+        font-size: 13px;
+        letter-spacing: 7px;
+    }
+
+    .loadingSub {
+        font-size: 12px;
+    }
+
+    .loadingBar {
+        margin-top: 35px;
+    }
 
 }
