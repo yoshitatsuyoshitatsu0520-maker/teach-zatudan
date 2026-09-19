@@ -744,10 +744,7 @@ function waitForNextDialogue() {
     }, 10000);
 
 }
-
 document.addEventListener("click", () => {
-
-    startBGM();
 
     // 最初の挨拶が終わるまでは
     // クリックで次のセリフへ進まない
