@@ -770,4 +770,125 @@ userInput.addEventListener("keydown", (event) => {
         sendReply();
     }
 });
-startGame();
+
+// =================================
+// ローディング
+// =================================
+
+async function loadGame() {
+
+    const loadingScreen =
+        document.getElementById(
+            "loadingScreen"
+        );
+
+    const loadingProgress =
+        document.getElementById(
+            "loadingProgress"
+        );
+
+    const loadingPercent =
+        document.getElementById(
+            "loadingPercent"
+        );
+
+
+    // =================================
+    // 読み込む画像
+    // =================================
+
+    const images = [
+
+        "images/1.png",
+        "images/2.png",
+        "images/3.png",
+        "images/4.png",
+        "images/5.png"
+
+    ];
+
+
+    // =================================
+    // 画像を先読み
+    // =================================
+
+    for (
+        let i = 0;
+        i < images.length;
+        i++
+    ) {
+
+        await new Promise(resolve => {
+
+            const img =
+                new Image();
+
+            img.onload =
+                resolve;
+
+            img.onerror =
+                resolve;
+
+            img.src =
+                images[i];
+
+        });
+
+
+        const percent =
+            Math.round(
+                ((i + 1) /
+                images.length) *
+                100
+            );
+
+
+        loadingProgress.style.width =
+            percent + "%";
+
+        loadingPercent.textContent =
+            percent + "%";
+
+    }
+
+
+    // =================================
+    // 少し待つ
+    // =================================
+
+    await new Promise(resolve =>
+        setTimeout(resolve, 300)
+    );
+
+
+    // =================================
+    // ローディング終了
+    // =================================
+
+    loadingScreen.style.opacity =
+        "0";
+
+
+    await new Promise(resolve =>
+        setTimeout(resolve, 500)
+    );
+
+
+    loadingScreen.style.display =
+        "none";
+
+
+    // =================================
+    // ゲーム開始
+    // =================================
+
+    startGame();
+
+}
+
+
+// =================================
+// ゲーム起動
+// =================================
+
+loadGame();
